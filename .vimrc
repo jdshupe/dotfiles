@@ -3,6 +3,8 @@ set termguicolors
 
 " set color scheme
 colorscheme slate
+hi NonText guibg=NONE ctermbg=NONE
+hi Normal guibg=NONE ctermbg=NONE
 
 " turns on line numbering
 set number
@@ -41,4 +43,16 @@ augroup END
 
 call plug#begin('~/.vim/plugged')
 	Plug 'mg979/vim-visual-multi', {'branch':'master'}
+	Plug 'christoomey/vim-tmux-navigator'
+	Plug 'Valloric/YouCompleteMe'
 call plug#end()
+
+" green/red diffs
+highlight diffAdded guifg=#00bf00
+highlight diffRemoved guifg=#bf0000
+
+if exists('+termguicolors')
+	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+	set termguicolors
+endif
