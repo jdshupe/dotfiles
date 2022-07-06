@@ -51,6 +51,7 @@ endif
 call plug#begin('~/.vim/plugged')
 	Plug 'mg979/vim-visual-multi', {'branch':'master'}
 	Plug 'christoomey/vim-tmux-navigator'
+	Plug 'ledger/vim-ledger'
 call plug#end()
 
 " green/red diffs
@@ -64,3 +65,7 @@ if exists('+termguicolors')
 endif
 
 map <F4> :sp %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+
+" ledger mappings
+au FileType ledger inoremap <silent> <Tab> <C-r>=ledger#autocomplete_and_align()<CR>
+au FileType ledger vnoremap <silent> <Tab> :LedgerAlign<CR>
